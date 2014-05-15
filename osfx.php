@@ -126,8 +126,8 @@ add_shortcode( 'shownotes', 'template' );
 
 function parse_shownotes( $source ) {
 	// Remove Header (is not used yet)
-	if( strpos($source, '/HEADER') )
-	    $source = substr( $source, strpos($source, '/HEADER') + 7 );
+	if( strpos($source, "\n/HEADER") )
+	    $source = substr( $source, strpos($source, "\n/HEADER") + 8 );
 
 	$data            = array();
 	$line_pointer    = 0;
