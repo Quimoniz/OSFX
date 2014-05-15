@@ -165,9 +165,9 @@ function parse_shownotes( $source ) {
 	                    if ( $numbers_of_colon == 2 && $numbers_of_dots <= 1 ) {
 	                        $shownote->timestamp        = new OSFShownoteProperties;
 	                        $shownote->timestamp->value = $string;
-	                    } elseif ( strlen($string) == 10 ) {
+	                    } elseif ( preg_match ('/^[0-9]{9,12}(\\.[0-9]{0,3})?$/', $string) ) {
 	                        $shownote->timestamp        = new OSFShownoteProperties;
-	                        $shownote->timestamp->value = $string;
+	                        $shownote->timestamp->value = '' . ( (int) $string);
 	                        if ( is_null( $first_timestamp ) ) 
 	                            $first_timestamp = $string;
 	                    } else {
